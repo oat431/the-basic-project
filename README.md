@@ -1,5 +1,37 @@
 # the-basic-project
+
 for practice the real framework
+
+### frontend
+- any meta framework likes Nuxt, Next
+- (any good website much have..., try to learn frontend framework concept if possible)
+
+### backend
+- clean architecture
+- clean code
+- monolith (because focus only blogs feature, will change if there are possible way to do a microservice)
+- any meta fraemwork likes Spring-boot3 (java), Gin-Gonic, ASP.NET7, NestJS(typescript)
+- Open Document API (Swagger)
+- GraphQL and RESTful API (gRPC if there is a possible way to do a micorservice)
+- Unit testing
+
+### Database
+- PostgreSQL (for authentication purpose)
+- Neo4J (for Graph Algorithm, Following feature)
+- MongoDB (for Blogs feature, ??)
+- Redis (for Cache)
+
+### DevOps
+- kong API gateway (maybe) or implement own API gate way
+- automate deploy to (I don't know yet which one is suit) heroku or onrender
+- can be switch to manual deploy if need to be rolled back
+- here some process : Build App -> Test (at least 85% cov) -> Upload to DockerHub -> Deploy Using Docker (if there a auto deploy)
+- all the process happend mostly on GitHub
+
+### Cross Platform
+- if frontend use Next, there is a React Native
+- Flutter
+
 
 ## it is a blog website
 
