@@ -2,6 +2,8 @@
 
 for practice the real framework
 
+## if it is a blog website
+
 ### frontend
 - any meta framework likes Nuxt, Next
 - (any good website much have..., try to learn frontend framework concept if possible)
@@ -33,8 +35,6 @@ for practice the real framework
 - Flutter
 
 
-## it is a blog website
-
 ### core feature
 - the blog in the platform need to be approved from admin first
 - the blog can be reported from admin (more detail later...)
@@ -60,3 +60,36 @@ for practice the real framework
 ### user
 - can CRUD blogs
 - can follows other user
+
+
+## if it is a todolist project
+### frontend
+- any meta framework likes Nuxt, Next
+- (any good website much have..., try to learn frontend framework concept if possible)
+
+### backend
+- clean architecture
+- clean code
+- monolith (it is a fk todo-list, what u expected?)
+- any meta fraemwork likes Spring-boot3 (java), Gin-Gonic, ASP.NET7, NestJS(typescript)
+- Open Document API (Swagger)
+- RESTful API
+- Unit testing
+
+### Database
+- PostgreSQL
+
+### DevOps
+- kong API gateway (maybe) or implement own API gate way
+- automate deploy to (I don't know yet which one is suit) heroku or onrender
+- can be switch to manual deploy if need to be rolled back
+- here some process : Build App -> Test (at least 85% cov) -> Upload to DockerHub -> Deploy Using Docker (if there a auto deploy)
+- all the process happend mostly on GitHub
+
+### Cross Platform
+- if frontend use Next, there is a React Native
+- Flutter
+
+### core feature
+- CRUD Todo list
+- CRUS Task in todo list
