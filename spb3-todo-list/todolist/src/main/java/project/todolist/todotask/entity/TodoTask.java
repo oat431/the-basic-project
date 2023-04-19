@@ -1,14 +1,13 @@
-package project.todolist.todolist.entity;
+package project.todolist.todotask.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import project.todolist.todotask.entity.TodoTask;
+import project.todolist.todolist.entity.TodoList;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
 @Entity
@@ -16,23 +15,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class TodoList {
+public class TodoTask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
-
-    String title;
-    String description;
-    Double progress;
-    Boolean isArchived;
+    String name;
+    Boolean isDone;
 
     @CreatedDate
     Date createdDate;
-
     @LastModifiedDate
     Date lastModifiedDate;
 
-    @OneToMany(mappedBy = "belongTo", cascade = CascadeType.ALL)
-    List<TodoTask> tasks;
+    @ManyToOne
+    TodoList belongTo;
 }
