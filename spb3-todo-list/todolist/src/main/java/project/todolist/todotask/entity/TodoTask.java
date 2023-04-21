@@ -1,6 +1,7 @@
 package project.todolist.todotask.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -20,8 +21,12 @@ public class TodoTask {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
+
+    @NotEmpty
     String name;
-    Boolean isDone;
+
+    @Builder.Default
+    Boolean isDone = false;
 
     @CreatedDate
     Date createdDate;

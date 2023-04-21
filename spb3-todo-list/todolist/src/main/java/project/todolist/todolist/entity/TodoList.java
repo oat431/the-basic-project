@@ -1,6 +1,8 @@
 package project.todolist.todolist.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -16,16 +18,22 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+@Schema(description = "TodoList Entity")
 public class TodoList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Exclude
     Long id;
 
+    @NotEmpty
     String title;
     String description;
-    Double progress;
-    Boolean isArchived;
+
+    @Builder.Default
+    Double progress = 0.0;
+
+    @Builder.Default
+    Boolean isArchived = false;
 
     @CreatedDate
     Date createdDate;
