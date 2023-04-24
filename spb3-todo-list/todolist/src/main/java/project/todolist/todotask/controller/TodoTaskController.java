@@ -23,7 +23,7 @@ public class TodoTaskController {
     final TodoTaskService todoTaskService;
 
     @Operation(summary = "Create Task in TodoList")
-    @PostMapping("/create")
+    @PostMapping("/")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Create Task in TodoList")
     })
