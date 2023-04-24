@@ -8,8 +8,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import project.todolist.todotask.dto.TodoTaskDto;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Builder
@@ -38,4 +40,7 @@ public class TodoListDto {
 
     @Schema(description = "TodoList Last Modified Date", example = "2021-08-01T00:00:00.000+00:00")
     Date lastModifiedDate;
+
+    @Schema(description = "TodoList Tasks")
+    List<TodoTaskDto> tasks;
 }
