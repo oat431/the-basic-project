@@ -1,4 +1,6 @@
 # the-basic-project
+- blog website
+- todo list application
 
 for practice the real framework
 
