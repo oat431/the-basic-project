@@ -1,6 +1,8 @@
 package project.todolist.todolist.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -11,6 +13,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import project.todolist.todolist.dto.PageTodoListDto;
+import project.todolist.todolist.dto.TodoListDto;
 import project.todolist.todolist.entity.TodoList;
 import project.todolist.todolist.entity.TodoListRequest;
 import project.todolist.todolist.service.TodoListService;
@@ -29,7 +33,14 @@ public class TodoListController {
     @Operation(summary = "Create TodoList")
     @PostMapping("/")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "TodoList Created"),
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "TodoList Created",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = TodoListDto.class)
+                    )
+            ),
     })
     public ResponseEntity<?> createTodoList(@RequestBody TodoListRequest body) {
         return ResponseEntity.ok(
@@ -42,7 +53,14 @@ public class TodoListController {
     @Operation(summary = "Get TodoList as pagination")
     @GetMapping("/")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "TodoList Retrieved"),
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "TodoList Retrieved",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = PageTodoListDto.class)
+                    )
+            ),
     })
     public ResponseEntity<?> getTodoList(
             @RequestParam(value = "_size", required = false) Integer size,
@@ -65,7 +83,14 @@ public class TodoListController {
     @Operation(summary = "Get TodoList By ID")
     @GetMapping("/{id}")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "TodoList Retrieved"),
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "TodoList Retrieved",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = TodoListDto.class)
+                    )
+            ),
     })
     public ResponseEntity<?> getTodoListById(@PathVariable Long id) {
         return ResponseEntity.ok(
@@ -78,7 +103,15 @@ public class TodoListController {
     @Operation(summary = "Update TodoList")
     @PutMapping("/{id}")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "TodoList Updated"),
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "TodoList Updated",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = TodoListDto.class)
+                    )
+
+            ),
     })
     public ResponseEntity<?> updateTodoList(@PathVariable Long id, @RequestBody TodoListRequest body) {
         return ResponseEntity.ok(
@@ -91,7 +124,14 @@ public class TodoListController {
     @Operation(summary = "Delete TodoList")
     @DeleteMapping("/{id}")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "TodoList Deleted"),
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "TodoList Deleted",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = TodoListDto.class)
+                    )
+            ),
     })
     public ResponseEntity<?> deleteTodoList(@PathVariable Long id) {
         TodoList arch = todoListService.archiveTodoList(id);

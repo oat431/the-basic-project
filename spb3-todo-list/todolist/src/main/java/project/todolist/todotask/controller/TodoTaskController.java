@@ -1,6 +1,8 @@
 package project.todolist.todotask.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -8,8 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import project.todolist.todolist.dto.TodoListDto;
 import project.todolist.todolist.entity.TodoList;
 import project.todolist.todolist.service.TodoListService;
+import project.todolist.todotask.dto.TodoTaskDto;
 import project.todolist.todotask.entity.TodoTaskRequest;
 import project.todolist.todotask.service.TodoTaskService;
 import project.todolist.utils.AppMapper;
@@ -25,7 +29,14 @@ public class TodoTaskController {
     @Operation(summary = "Create Task in TodoList")
     @PostMapping("/")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Create Task in TodoList")
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Create Task in TodoList",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = TodoListDto.class)
+                    )
+            )
     })
     public ResponseEntity<?> createTodoTask(
             @RequestParam("_todo_id") Long todoId,
@@ -42,7 +53,14 @@ public class TodoTaskController {
     @Operation(summary = "Get Task in TodoList")
     @GetMapping("/{id}")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Get Task in TodoList")
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Get Task in TodoList",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = TodoTaskDto.class)
+                    )
+            )
     })
     public ResponseEntity<?> getTodoTask(
             @PathVariable("id") Long id
@@ -57,7 +75,14 @@ public class TodoTaskController {
     @Operation(summary = "Update Task in TodoList")
     @PutMapping("/{id}")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Update Task in TodoList")
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "Update Task in TodoList",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = TodoTaskDto.class)
+                    )
+            )
     })
     public ResponseEntity<?> updateTodoTask(
             @PathVariable("id") Long id,
@@ -74,7 +99,14 @@ public class TodoTaskController {
     @Operation(summary = "update task status in TodoList")
     @PatchMapping("/{id}")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "update task status in TodoList")
+            @ApiResponse(
+                    responseCode = "200",
+                    description = "update task status in TodoList",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = TodoTaskDto.class)
+                    )
+            )
     })
     public ResponseEntity<?> updateTodoTaskStatus(
             @PathVariable("id") Long id

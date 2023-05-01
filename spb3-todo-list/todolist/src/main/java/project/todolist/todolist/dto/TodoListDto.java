@@ -17,27 +17,27 @@ import java.util.List;
 @Schema(description = "TodoList Response")
 public class TodoListDto {
 
-    @Schema(description = "TodoList ID", example = "1")
+    @Schema(description = "TodoList ID", example = "1" , requiredMode = Schema.RequiredMode.REQUIRED)
     Long id;
 
-    @Schema(description = "TodoList Title", example = "TodoList Title")
+    @Schema(description = "TodoList Title", example = "TodoList Title" , requiredMode = Schema.RequiredMode.REQUIRED)
     String title;
 
-    @Schema(description = "TodoList Description", example = "TodoList Description")
+    @Schema(description = "TodoList Description", example = "TodoList Description", requiredMode = Schema.RequiredMode.REQUIRED)
     String description;
 
-    @Schema(description = "TodoList Progress", example = "0.0")
+    @Schema(description = "TodoList Progress", example = "0.0" , requiredMode = Schema.RequiredMode.REQUIRED)
     Double progress;
 
-    @Schema(description = "TodoList Archived", example = "false")
+    @Schema(description = "TodoList Archived", example = "false" , requiredMode = Schema.RequiredMode.REQUIRED)
     Boolean isArchived;
 
-    @Schema(description = "TodoList Created Date", example = "2021-08-01T00:00:00.000+00:00")
+    @Schema(description = "TodoList Created Date", example = "2021-08-01T00:00:00.000Z" , pattern = "yyyy-MM-ddThh:mm:ss:sssZ" , requiredMode = Schema.RequiredMode.REQUIRED)
     Date createdDate;
 
-    @Schema(description = "TodoList Last Modified Date", example = "2021-08-01T00:00:00.000+00:00")
+    @Schema(description = "TodoList Last Modified Date", example = "2021-08-01T00:00:00.000Z", pattern = "yyyy-MM-ddThh:mm:ss:sssZ" , requiredMode = Schema.RequiredMode.REQUIRED)
     Date lastModifiedDate;
 
-    @Schema(description = "TodoList Tasks")
+    @Schema(description = "TodoList Tasks" , requiredMode = Schema.RequiredMode.REQUIRED)
     List<TodoTaskDto> tasks;
 }
