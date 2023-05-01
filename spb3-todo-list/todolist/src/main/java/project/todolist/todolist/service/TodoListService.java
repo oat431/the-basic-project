@@ -10,6 +10,8 @@ public interface TodoListService {
 
     TodoList updateTodoList(Long id, TodoListRequest todoListRequest);
 
+    TodoList updateProgress(TodoList todoList);
+
     TodoList getTodoList(Long id);
 
     Page<TodoList> getTodoLists(PageRequest pageRequest);

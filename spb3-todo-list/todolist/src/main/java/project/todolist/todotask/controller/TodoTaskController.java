@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import project.todolist.todolist.entity.TodoList;
 import project.todolist.todolist.service.TodoListService;
 import project.todolist.todotask.entity.TodoTaskRequest;
 import project.todolist.todotask.service.TodoTaskService;
@@ -93,7 +94,9 @@ public class TodoTaskController {
     public ResponseEntity<?> deleteTodoTask(
             @PathVariable("id") Long id
     ) {
+        TodoList todoList = todoTaskService.getTodoTask(id).getBelongTo();
         todoTaskService.deleteTodoTask(id);
+        todoListService.updateProgress(todoList);
         return ResponseEntity.ok("Delete Successfully");
     }
 }

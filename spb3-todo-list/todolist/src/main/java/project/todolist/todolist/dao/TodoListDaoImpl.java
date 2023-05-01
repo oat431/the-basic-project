@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 import project.todolist.todolist.entity.TodoList;
 import project.todolist.todolist.repository.TodoListRepository;
+import project.todolist.todotask.entity.TodoTask;
 
 @Repository
 @RequiredArgsConstructor
@@ -15,6 +16,19 @@ public class TodoListDaoImpl implements TodoListDao {
 
     @Override
     public TodoList saveTodoList(TodoList todoList) {
+        return todoListRepository.save(todoList);
+    }
+
+    @Override
+    public TodoList updateProgress(TodoList todoList) {
+        int allTask = todoList.getTasks().size();
+        int doneTask = (int) todoList.getTasks().stream().filter(TodoTask::getIsDone).count();
+        if(doneTask == 0) {
+            todoList.setProgress(0.0);
+            return todoListRepository.save(todoList);
+        }
+        double progress = (double) doneTask / allTask;
+        todoList.setProgress(progress * 100);
         return todoListRepository.save(todoList);
     }
 

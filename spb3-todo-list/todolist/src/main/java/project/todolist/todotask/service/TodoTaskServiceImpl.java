@@ -26,6 +26,7 @@ public class TodoTaskServiceImpl implements TodoTaskService {
                 .name(todoTaskRequest.getName())
                 .build();
         todoTask.setBelongTo(todoList);
+        todoListDao.updateProgress(todoList);
         return todoTaskDao.saveTodoTask(todoTask);
     }
 
@@ -40,6 +41,7 @@ public class TodoTaskServiceImpl implements TodoTaskService {
     public TodoTask updateStatus(Long id) {
         TodoTask todoTask = todoTaskDao.getTodoTask(id);
         todoTask.setIsDone(!todoTask.getIsDone());
+        todoListDao.updateProgress(todoTask.getBelongTo());
         return todoTaskDao.saveTodoTask(todoTask);
     }
 

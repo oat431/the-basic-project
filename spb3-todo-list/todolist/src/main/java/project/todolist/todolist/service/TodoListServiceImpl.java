@@ -32,6 +32,11 @@ public class TodoListServiceImpl implements TodoListService {
     }
 
     @Override
+    public TodoList updateProgress(TodoList todoList) {
+        return todoListDao.updateProgress(todoList);
+    }
+
+    @Override
     public TodoList getTodoList(Long id) {
         return todoListDao.getTodoList(id);
     }

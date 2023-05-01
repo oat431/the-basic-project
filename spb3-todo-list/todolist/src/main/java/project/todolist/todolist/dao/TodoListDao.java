@@ -6,6 +6,7 @@ import project.todolist.todolist.entity.TodoList;
 
 public interface TodoListDao {
     TodoList saveTodoList(TodoList todoList);
+    TodoList updateProgress(TodoList todoList);
 
     TodoList getTodoList(Long id);
 
