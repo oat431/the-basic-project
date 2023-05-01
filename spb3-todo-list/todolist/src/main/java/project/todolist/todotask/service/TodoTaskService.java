@@ -8,6 +8,7 @@ import project.todolist.todotask.entity.TodoTaskRequest;
 public interface TodoTaskService {
     TodoTask createTodoTask(Long todoListId, TodoTaskRequest todoTaskRequest);
     TodoTask updateTodoTask(Long id, TodoTaskRequest todoTaskRequest);
+    TodoTask updateStatus(Long id);
     TodoTask getTodoTask(Long id);
     Page<TodoTask> getTodoTasksByTodoList(Long todoListId, PageRequest pageRequest);
     TodoTask deleteTodoTask(Long id);

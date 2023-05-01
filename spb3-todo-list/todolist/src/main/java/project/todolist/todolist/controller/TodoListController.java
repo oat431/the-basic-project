@@ -39,7 +39,7 @@ public class TodoListController {
         );
     }
 
-    @Operation(summary = "Get TodoList")
+    @Operation(summary = "Get TodoList as pagination")
     @GetMapping("/")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "TodoList Retrieved"),

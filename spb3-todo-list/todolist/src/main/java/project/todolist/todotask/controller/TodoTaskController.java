@@ -64,8 +64,23 @@ public class TodoTaskController {
     ) {
         todoTaskService.updateTodoTask(id, todoTaskRequest);
         return ResponseEntity.ok(
-                AppMapper.INSTANCE.getTodoListDto(
-                        todoListService.getTodoList(todoTaskService.getTodoTask(id).getBelongTo().getId())
+                AppMapper.INSTANCE.getTodoTaskDto(
+                        todoTaskService.getTodoTask(id)
+                )
+        );
+    }
+
+    @Operation(summary = "update task status in TodoList")
+    @PatchMapping("/{id}")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "update task status in TodoList")
+    })
+    public ResponseEntity<?> updateTodoTaskStatus(
+            @PathVariable("id") Long id
+    ) {
+        return ResponseEntity.ok(
+                AppMapper.INSTANCE.getTodoTaskDto(
+                        todoTaskService.updateStatus(id)
                 )
         );
     }
