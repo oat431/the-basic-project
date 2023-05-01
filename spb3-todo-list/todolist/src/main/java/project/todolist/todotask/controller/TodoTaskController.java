@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import project.todolist.todolist.entity.TodoList;
 import project.todolist.todolist.service.TodoListService;
 import project.todolist.todotask.entity.TodoTaskRequest;
 import project.todolist.todotask.service.TodoTaskService;
@@ -37,5 +36,49 @@ public class TodoTaskController {
                         todoListService.getTodoList(todoId)
                 )
         );
+    }
+
+    @Operation(summary = "Get Task in TodoList")
+    @GetMapping("/{id}")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Get Task in TodoList")
+    })
+    public ResponseEntity<?> getTodoTask(
+            @PathVariable("id") Long id
+    ) {
+        return ResponseEntity.ok(
+                AppMapper.INSTANCE.getTodoTaskDto(
+                        todoTaskService.getTodoTask(id)
+                )
+        );
+    }
+
+    @Operation(summary = "Update Task in TodoList")
+    @PutMapping("/{id}")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Update Task in TodoList")
+    })
+    public ResponseEntity<?> updateTodoTask(
+            @PathVariable("id") Long id,
+            @RequestBody TodoTaskRequest todoTaskRequest
+    ) {
+        todoTaskService.updateTodoTask(id, todoTaskRequest);
+        return ResponseEntity.ok(
+                AppMapper.INSTANCE.getTodoListDto(
+                        todoListService.getTodoList(todoTaskService.getTodoTask(id).getBelongTo().getId())
+                )
+        );
+    }
+
+    @Operation(summary = "Delete Task in TodoList")
+    @DeleteMapping("/{id}")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Delete Task in TodoList")
+    })
+    public ResponseEntity<?> deleteTodoTask(
+            @PathVariable("id") Long id
+    ) {
+        todoTaskService.deleteTodoTask(id);
+        return ResponseEntity.ok("Delete Successfully");
     }
 }
