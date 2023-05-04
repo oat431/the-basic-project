@@ -1,0 +1,23 @@
+type TodoListDto {
+    id: ID
+    title: String
+    description: String
+    progress: Float
+    isArchived: Boolean
+    createdAt: String
+    lastModifiedDate: String
+    tasks: [TodoTaskDto]
+}
+
+type PageTodoListDto {
+    page: Int
+    size: Int
+    totalElements: Int
+    totalPages: Int
+    content: [TodoListDto]
+}
+
+input TodoListRequest {
+    title: String
+    description: String
+}

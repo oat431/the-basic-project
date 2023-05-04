@@ -1,7 +1,26 @@
-#type Query {
-#
-#}
-#
-#type Mutation {
-#
-#}
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    # todoList
+    getTodoList(size: Int, page: Int): PageTodoListDto
+    getTodoListById(id: Int): TodoListDto
+
+    # todoTask
+    getTodoTaskById(id: Int): TodoTaskDto
+}
+
+type Mutation {
+    # todoList
+    createTodoList(todoList: TodoListRequest) : TodoListDto
+    updateTodoList(id: Int,todoList: TodoListRequest) : TodoListDto
+    deleteTodoList(id: Int) : TodoListDto
+
+    # todoTask
+    createTodoTask(todoId: Int, task: TodoTaskRequest) : TodoListDto
+    updateTodoTask(id: Int, task: TodoTaskRequest) : TodoTaskDto
+    updateTodoTaskStatus(id: Int) : TodoTaskDto
+    deleteTodoTask(id: Int) : TodoTaskDto
+}

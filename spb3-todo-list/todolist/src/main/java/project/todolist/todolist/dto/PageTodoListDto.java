@@ -25,7 +25,7 @@ public class PageTodoListDto {
     Integer totalPage;
 
     @Schema(name = "totalElements", description = "total elements", example = "100", requiredMode = Schema.RequiredMode.REQUIRED)
-    Integer totalElements;
+    Long totalElements;
 
     @Schema(name = "content", description = "content", requiredMode = Schema.RequiredMode.REQUIRED)
     List<TodoListDto> content;

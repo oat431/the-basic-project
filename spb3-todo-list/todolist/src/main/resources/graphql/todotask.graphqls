@@ -1,0 +1,12 @@
+type TodoTaskDto {
+    id: Int
+    name: String
+    isDone: Boolean
+    createdDate: String
+    lastModifiedDate: String
+    todoListName: String
+}
+
+input TodoTaskRequest {
+    name: String
+}
