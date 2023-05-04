@@ -1,6 +1,6 @@
 type TodoListDto {
-    id: ID
-    title: String
+    id: ID!
+    title: String!
     description: String
     progress: Float
     isArchived: Boolean
@@ -10,11 +10,11 @@ type TodoListDto {
 }
 
 type PageTodoListDto {
-    page: Int
-    size: Int
-    totalElements: Int
-    totalPages: Int
-    content: [TodoListDto]
+    page: Int!
+    size: Int!
+    totalElements: Int!
+    totalPages: Int!
+    content: [TodoListDto!]!
 }
 
 input TodoListRequest {

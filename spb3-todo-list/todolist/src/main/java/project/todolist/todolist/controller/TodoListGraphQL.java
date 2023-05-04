@@ -25,7 +25,7 @@ public class TodoListGraphQL {
         return PageTodoListDto.builder()
                 .page(page)
                 .size(size)
-                .totalPage(todoList.getTotalPages())
+                .totalPages(todoList.getTotalPages())
                 .totalElements(todoList.getTotalElements())
                 .content(AppMapper.INSTANCE.getTodoListDto(todoList.getContent()))
                 .build();

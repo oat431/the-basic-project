@@ -22,7 +22,7 @@ public class PageTodoListDto {
     Integer size;
 
     @Schema(name = "totalPage", description = "total page", example = "10", requiredMode = Schema.RequiredMode.REQUIRED)
-    Integer totalPage;
+    Integer totalPages;
 
     @Schema(name = "totalElements", description = "total elements", example = "100", requiredMode = Schema.RequiredMode.REQUIRED)
     Long totalElements;
