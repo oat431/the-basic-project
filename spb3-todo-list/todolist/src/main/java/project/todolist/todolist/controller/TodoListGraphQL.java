@@ -4,10 +4,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 import project.todolist.todolist.dto.PageTodoListDto;
+import project.todolist.todolist.dto.TodoListDto;
 import project.todolist.todolist.entity.TodoList;
+import project.todolist.todolist.entity.TodoListRequest;
 import project.todolist.todolist.service.TodoListService;
 import project.todolist.utils.AppMapper;
 
@@ -29,5 +32,30 @@ public class TodoListGraphQL {
                 .totalElements(todoList.getTotalElements())
                 .content(AppMapper.INSTANCE.getTodoListDto(todoList.getContent()))
                 .build();
+    }
+
+    @QueryMapping
+    public TodoListDto getTodoListById(@Argument Long id) {
+        return AppMapper.INSTANCE.getTodoListDto(todoListService.getTodoList(id));
+    }
+
+    @MutationMapping
+    public TodoListDto createTodoList(@Argument TodoListRequest body) {
+        return AppMapper.INSTANCE.getTodoListDto(
+            todoListService.createTodoList(body)
+        );
+    } 
+
+    @MutationMapping
+    public TodoListDto updateTodoList(@Argument Long id, @Argument TodoListRequest body) {
+        return AppMapper.INSTANCE.getTodoListDto(
+            todoListService.updateTodoList(id, body)
+        );
+    }
+
+    @MutationMapping
+    public TodoListDto deleteTodoList(@Argument Long id) {
+        TodoList arch = todoListService.archiveTodoList(id);
+        return AppMapper.INSTANCE.getTodoListDto(arch);
     }
 }

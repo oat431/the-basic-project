@@ -14,13 +14,13 @@ type Query {
 
 type Mutation {
     # todoList
-    createTodoList(todoList: TodoListRequest) : TodoListDto
-    updateTodoList(id: Int,todoList: TodoListRequest) : TodoListDto
+    createTodoList(body: TodoListRequest) : TodoListDto
+    updateTodoList(id: Int,body: TodoListRequest) : TodoListDto
     deleteTodoList(id: Int) : TodoListDto
 
     # todoTask
     createTodoTask(todoId: Int, task: TodoTaskRequest) : TodoListDto
     updateTodoTask(id: Int, task: TodoTaskRequest) : TodoTaskDto
     updateTodoTaskStatus(id: Int) : TodoTaskDto
-    deleteTodoTask(id: Int) : TodoTaskDto
+    deleteTodoTask(id: Int) : TodoListDto
 }
