@@ -9,6 +9,13 @@ spring:
     username: postgres
     password: Saha@6462++
     driver-class-name: org.postgresql.Driver
+  data:
+    redis:
+      host: redis-11142.c252.ap-southeast-1-1.ec2.cloud.redislabs.com
+      port: 11142
+      timeout: 10000ms
+      username: oat431
+      password: Saha@6462
   jpa:
     hibernate:
       ddl-auto: update

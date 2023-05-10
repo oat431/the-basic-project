@@ -1,6 +1,7 @@
 package project.todolist.todolist.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.graphql.data.method.annotation.Argument;
@@ -35,6 +36,7 @@ public class TodoListGraphQL {
     }
 
     @QueryMapping
+    @Cacheable(value = "todoListId", key = "#id",unless = "#result == null")
     public TodoListDto getTodoListById(@Argument Long id) {
         return AppMapper.INSTANCE.getTodoListDto(todoListService.getTodoList(id));
     }
