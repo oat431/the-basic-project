@@ -72,10 +72,11 @@ for practice the real framework
 ### backend
 - clean architecture
 - clean code
-- monolith (it is a fk todo-list, what u expected?)
+- monolith
 - any meta fraemwork likes Spring-boot3 (java), Gin-Gonic, ASP.NET7, NestJS(typescript)
 - Open Document API (Swagger)
 - RESTful API
+- GraphQL
 - Unit testing
 
 ### Database
