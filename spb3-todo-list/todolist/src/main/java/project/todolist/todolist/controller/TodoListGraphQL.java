@@ -1,6 +1,8 @@
 package project.todolist.todolist.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -21,6 +23,7 @@ public class TodoListGraphQL {
     final TodoListService todoListService;
 
     @QueryMapping
+    @Cacheable(value = "todoList", key = "T(java.lang.String).format('%s-%d-%d', #root.method.name, #size, #page)", unless = "#result == null")
     public PageTodoListDto getTodoList(@Argument Integer size, @Argument Integer page) {
         size = size == null ? 10 : size;
         page = page == null ? 1 : page - 1;
@@ -49,6 +52,7 @@ public class TodoListGraphQL {
     } 
 
     @MutationMapping
+    @CachePut(value = "todoListId", key = "#id")
     public TodoListDto updateTodoList(@Argument Long id, @Argument TodoListRequest body) {
         return AppMapper.INSTANCE.getTodoListDto(
             todoListService.updateTodoList(id, body)
@@ -56,6 +60,7 @@ public class TodoListGraphQL {
     }
 
     @MutationMapping
+    @CacheEvict(value = "todoListId", key = "#id", allEntries = true)
     public TodoListDto deleteTodoList(@Argument Long id) {
         TodoList arch = todoListService.archiveTodoList(id);
         return AppMapper.INSTANCE.getTodoListDto(arch);
