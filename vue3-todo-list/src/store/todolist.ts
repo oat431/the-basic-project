@@ -1,3 +1,7 @@
 import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
-export const useStore = defineStore('todolist', {})
+export const useTodoListStore = defineStore('todolist',() => {
+    const data = ref();
+    return { data }
+})
