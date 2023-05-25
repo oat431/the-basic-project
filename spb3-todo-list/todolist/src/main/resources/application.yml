@@ -5,17 +5,17 @@ spring:
   application:
     name: "Spring Boot 3 Todo List"
   datasource:
-    url: jdbc:postgresql://db.lxjsajaphfdsacorkpay.supabase.co:5432/postgres?createDatabaseIfNotExist=true&autoReconnect=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:postgresql://<DB_URL>:5432/postgres?createDatabaseIfNotExist=true&autoReconnect=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8
     username: postgres
-    password: Saha@6462++
+    password: <your_password>
     driver-class-name: org.postgresql.Driver
   data:
     redis:
-      host: redis-11142.c252.ap-southeast-1-1.ec2.cloud.redislabs.com
-      port: 11142
+      host: <REDIS URL>
+      port: <PORT>
       timeout: 10000ms
-      username: oat431
-      password: Saha@6462
+      username: <USERNAME>
+      password: <PASSWORD>
   jpa:
     hibernate:
         ddl-auto: update
