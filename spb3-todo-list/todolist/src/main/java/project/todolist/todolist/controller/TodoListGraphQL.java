@@ -1,6 +1,7 @@
 package project.todolist.todolist.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -21,6 +22,7 @@ import project.todolist.utils.AppMapper;
 @RequiredArgsConstructor
 public class TodoListGraphQL {
     final TodoListService todoListService;
+    final CacheManager cacheManager;
 
     @QueryMapping
     @Cacheable(value = "todoList", key = "T(java.lang.String).format('%s-%d-%d', #root.method.name, #size, #page)", unless = "#result == null")
@@ -45,6 +47,7 @@ public class TodoListGraphQL {
     }
 
     @MutationMapping
+    @CacheEvict(value = "todoList", allEntries = true)
     public TodoListDto createTodoList(@Argument TodoListRequest body) {
         return AppMapper.INSTANCE.getTodoListDto(
             todoListService.createTodoList(body)
@@ -60,9 +63,10 @@ public class TodoListGraphQL {
     }
 
     @MutationMapping
-    @CacheEvict(value = "todoListId", key = "#id", allEntries = true)
+    @CacheEvict(value = "todoList", allEntries = true)
     public TodoListDto deleteTodoList(@Argument Long id) {
         TodoList arch = todoListService.archiveTodoList(id);
+        cacheManager.getCache("todoListId").evict(id);
         return AppMapper.INSTANCE.getTodoListDto(arch);
     }
 }

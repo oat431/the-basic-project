@@ -20,7 +20,7 @@ type Mutation {
 
     # todoTask
     createTodoTask(todoId: Int, task: TodoTaskRequest) : TodoListDto
-    updateTodoTask(id: Int, task: TodoTaskRequest) : TodoTaskDto
-    updateTodoTaskStatus(id: Int) : TodoTaskDto
+    updateTodoTask(id: Int, task: TodoTaskRequest) : TodoListDto
+    updateTodoTaskStatus(id: Int) : TodoListDto
     deleteTodoTask(id: Int) : TodoListDto
 }

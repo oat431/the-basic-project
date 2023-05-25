@@ -18,7 +18,7 @@ spring:
       password: Saha@6462
   jpa:
     hibernate:
-      ddl-auto: update
+        ddl-auto: update
   graphql:
     path: /api/v1/graphql
     graphiql:

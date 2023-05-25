@@ -1,6 +1,8 @@
 package project.todolist.todolist.dao;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
@@ -9,6 +11,7 @@ import project.todolist.todolist.repository.TodoListRepository;
 import project.todolist.todotask.entity.TodoTask;
 
 @Repository
+@Slf4j
 @RequiredArgsConstructor
 public class TodoListDaoImpl implements TodoListDao {
 
