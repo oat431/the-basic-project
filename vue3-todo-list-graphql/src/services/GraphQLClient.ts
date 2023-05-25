@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const graphqlInstant = axios.create({
-    baseURL: "YOUR_API_ENDPOINT",
+    baseURL: "graphql_endpoint",
     withCredentials: false,
     headers: {
         Accept: "application/json",
