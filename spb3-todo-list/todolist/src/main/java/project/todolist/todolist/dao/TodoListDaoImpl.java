@@ -42,6 +42,6 @@ public class TodoListDaoImpl implements TodoListDao {
 
     @Override
     public Page<TodoList> getTodoLists(PageRequest pageRequest) {
-        return todoListRepository.findAllByIsArchivedFalseOrderByCreatedDateAsc(pageRequest);
+        return todoListRepository.findAllByIsArchivedFalseOrderByIdAsc(pageRequest);
     }
 }

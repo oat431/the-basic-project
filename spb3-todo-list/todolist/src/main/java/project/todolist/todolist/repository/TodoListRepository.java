@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import project.todolist.todolist.entity.TodoList;
 
 public interface TodoListRepository extends JpaRepository<TodoList, Long>, JpaSpecificationExecutor<TodoList> {
-    Page<TodoList> findAllByIsArchivedFalseOrderByCreatedDateAsc(Pageable pageable);
+    Page<TodoList> findAllByIsArchivedFalseOrderByIdAsc(Pageable pageable);
 }
