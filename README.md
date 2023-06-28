@@ -95,3 +95,19 @@ for practice the real framework
 ### core feature
 - CRUD Todo list
 - CRUD Task in todo list
+
+---
+
+#### code name for my project
+
+I have some cool code name for my future project it will bease on river around the world, something like
+- Nile
+- Amazon
+- Danube
+- Yangtze
+- Mississippi
+- Ganges
+- Volga
+- Mekong
+- Rhine
+- Zambezi
